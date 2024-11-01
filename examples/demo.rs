@@ -62,19 +62,58 @@ fn create_task_table() -> Table {
 
 fn print_ml_predictions() {
     let predictions = vec![
-        MLPrediction { height: 184.3, weight: 89.5, raw_pred: 0.0000, actual: "Male" },
-        MLPrediction { height: 176.8, weight: 79.2, raw_pred: 0.0036, actual: "Male" },
-        MLPrediction { height: 165.9, weight: 58.7, raw_pred: 0.9214, actual: "Female" },
-        MLPrediction { height: 164.1, weight: 57.8, raw_pred: 0.9441, actual: "Female" },
-        MLPrediction { height: 181.9, weight: 85.8, raw_pred: 0.0001, actual: "Male" },
-        MLPrediction { height: 157.9, weight: 50.6, raw_pred: 0.9893, actual: "Female" },
-        MLPrediction { height: 178.4, weight: 81.6, raw_pred: 0.0010, actual: "Male" },
+        MLPrediction {
+            height: 184.3,
+            weight: 89.5,
+            raw_pred: 0.0000,
+            actual: "Male",
+        },
+        MLPrediction {
+            height: 176.8,
+            weight: 79.2,
+            raw_pred: 0.0036,
+            actual: "Male",
+        },
+        MLPrediction {
+            height: 165.9,
+            weight: 58.7,
+            raw_pred: 0.9214,
+            actual: "Female",
+        },
+        MLPrediction {
+            height: 164.1,
+            weight: 57.8,
+            raw_pred: 0.9441,
+            actual: "Female",
+        },
+        MLPrediction {
+            height: 181.9,
+            weight: 85.8,
+            raw_pred: 0.0001,
+            actual: "Male",
+        },
+        MLPrediction {
+            height: 157.9,
+            weight: 50.6,
+            raw_pred: 0.9893,
+            actual: "Female",
+        },
+        MLPrediction {
+            height: 178.4,
+            weight: 81.6,
+            raw_pred: 0.0010,
+            actual: "Male",
+        },
     ];
 
     let mut table = create_ml_table();
 
     for pred in predictions {
-        let predicted = if pred.raw_pred > 0.5 { "Female" } else { "Male" };
+        let predicted = if pred.raw_pred > 0.5 {
+            "Female"
+        } else {
+            "Male"
+        };
         table.add_row(vec![
             format!("{:.1}", pred.height),
             format!("{:.1}", pred.weight),
@@ -91,11 +130,41 @@ fn print_ml_predictions() {
 
 fn print_student_grades() {
     let students = vec![
-        Student { id: "2024001", name: "Alice Johnson", math: 95, science: 92, english: 88 },
-        Student { id: "2024002", name: "Bob Smith", math: 88, science: 90, english: 85 },
-        Student { id: "2024003", name: "Carol Williams", math: 92, science: 95, english: 94 },
-        Student { id: "2024004", name: "David Brown", math: 78, science: 82, english: 80 },
-        Student { id: "2024005", name: "Emma Davis", math: 98, science: 96, english: 92 },
+        Student {
+            id: "2024001",
+            name: "Alice Johnson",
+            math: 95,
+            science: 92,
+            english: 88,
+        },
+        Student {
+            id: "2024002",
+            name: "Bob Smith",
+            math: 88,
+            science: 90,
+            english: 85,
+        },
+        Student {
+            id: "2024003",
+            name: "Carol Williams",
+            math: 92,
+            science: 95,
+            english: 94,
+        },
+        Student {
+            id: "2024004",
+            name: "David Brown",
+            math: 78,
+            science: 82,
+            english: 80,
+        },
+        Student {
+            id: "2024005",
+            name: "Emma Davis",
+            math: 98,
+            science: 96,
+            english: 92,
+        },
     ];
 
     let mut table = create_student_table();
@@ -120,29 +189,39 @@ fn print_student_grades() {
 fn print_project_status() {
     let tasks = vec![
         Task {
-            id: "TASK-01", priority: "HIGH",
+            id: "TASK-01",
+            priority: "HIGH",
             description: "Implement user authentication",
-            status: "In Progress", due_date: "2024-04-01",
+            status: "In Progress",
+            due_date: "2024-04-01",
         },
         Task {
-            id: "TASK-02", priority: "MEDIUM",
+            id: "TASK-02",
+            priority: "MEDIUM",
             description: "Design database schema",
-            status: "Completed", due_date: "2024-03-25",
+            status: "Completed",
+            due_date: "2024-03-25",
         },
         Task {
-            id: "TASK-03", priority: "HIGH",
+            id: "TASK-03",
+            priority: "HIGH",
             description: "API documentation",
-            status: "Pending", due_date: "2024-04-05",
+            status: "Pending",
+            due_date: "2024-04-05",
         },
         Task {
-            id: "TASK-04", priority: "LOW",
+            id: "TASK-04",
+            priority: "LOW",
             description: "Unit test coverage",
-            status: "Not Started", due_date: "2024-04-10",
+            status: "Not Started",
+            due_date: "2024-04-10",
         },
         Task {
-            id: "TASK-05", priority: "MEDIUM",
+            id: "TASK-05",
+            priority: "MEDIUM",
             description: "Performance optimization",
-            status: "In Progress", due_date: "2024-04-15",
+            status: "In Progress",
+            due_date: "2024-04-15",
         },
     ];
 
@@ -166,12 +245,12 @@ fn print_project_status() {
 fn main() {
     println!("🌟 Pinax Table Formatting Demo 🌟");
     println!("================================");
-    
+
     print_ml_predictions();
     println!();
-    
+
     print_student_grades();
     println!();
-    
+
     print_project_status();
 }
