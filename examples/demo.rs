@@ -242,6 +242,108 @@ fn print_project_status() {
     println!("{}", table);
 }
 
+fn print_grid_demo() {
+    // Simple 3x3 Grid Example
+    let mut simple_grid = Grid::builder()
+        .dimensions(3, 3)
+        .style(BorderStyle::Single)
+        .build();
+
+    simple_grid.set(0, 0, "1");
+    simple_grid.set(0, 1, "2");
+    simple_grid.set(0, 2, "3");
+    simple_grid.set(1, 1, "Center");
+    simple_grid.set(2, 0, "7");
+    simple_grid.set(2, 1, "8");
+    simple_grid.set(2, 2, "9");
+
+    println!("\n📱 Simple 3x3 Grid");
+    println!("================");
+    println!("{}", simple_grid);
+
+    // Calendar-like Grid
+    let mut calendar = Grid::builder()
+        .dimensions(5, 7)
+        .style(BorderStyle::Double)
+        .build();
+
+    // Headers
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    for (i, day) in days.iter().enumerate() {
+        calendar.set(0, i, day.to_string());
+    }
+
+    // Calendar dates
+    let dates = [
+        ["1", "2", "3", "4", "5", "6", "7"],
+        ["8", "9", "10", "11", "12", "13", "14"],
+        ["15", "16", "17", "18", "19", "20", "21"],
+        ["22", "23", "24", "25", "26", "27", "28"],
+    ];
+
+    for (row, week) in dates.iter().enumerate() {
+        for (col, date) in week.iter().enumerate() {
+            calendar.set(row + 1, col, date.to_string());
+        }
+    }
+
+    println!("\n📅 Calendar Grid Example");
+    println!("=====================");
+    println!("{}", calendar);
+}
+
+fn print_panel_demo() {
+    let welcome_panel = Panel::new(
+        "Welcome to Pinax - a powerful terminal UI toolkit for Rust! \
+        This panel demonstrates text wrapping and border styling capabilities. \
+        Long text will automatically wrap to fit within the specified width.",
+    )
+    .with_title("Welcome")
+    .with_width(60);
+
+    let stats_panel = Panel::new(
+        "📈 Active Users: 1,234\n\
+         🔄 Server Uptime: 99.9%\n\
+         💾 Memory Usage: 2.1GB\n\
+         🚀 Response Time: 45ms",
+    )
+    .with_title("System Stats")
+    .with_width(30);
+
+    println!("\n📦 Panel Examples");
+    println!("===============");
+    println!("{}", welcome_panel);
+    println!("\n{}", stats_panel);
+}
+
+fn print_chart_demo() {
+    // Line Chart Example
+    let mut line_chart = Chart::new(ChartType::Line)
+        .with_height(15)
+        .with_title("Monthly Revenue (in $K)");
+
+    line_chart.add_data_point("Jan", 10.0);
+    line_chart.add_data_point("Feb", 15.0);
+    line_chart.add_data_point("Mar", 13.0);
+    line_chart.add_data_point("Apr", 17.0);
+    line_chart.add_data_point("May", 20.0);
+    line_chart.add_data_point("Jun", 18.0);
+
+    println!("\n{}", line_chart);
+
+    // Bar Chart Example
+    let mut bar_chart = Chart::new(ChartType::Bar)
+        .with_title("Daily Activity (Tasks Completed)");
+        
+    bar_chart.add_data_point("Mon", 45.0);
+    bar_chart.add_data_point("Tue", 30.0);
+    bar_chart.add_data_point("Wed", 60.0);
+    bar_chart.add_data_point("Thu", 35.0);
+    bar_chart.add_data_point("Fri", 50.0);
+
+    println!("\n{}", bar_chart);
+}
+
 fn main() {
     println!("🌟 Pinax Table Formatting Demo 🌟");
     println!("================================");
@@ -253,4 +355,14 @@ fn main() {
     println!();
 
     print_project_status();
+    println!();
+
+    print_grid_demo();
+    println!();
+
+    // Add the new demo functions
+    print_panel_demo();
+    println!();
+
+    print_chart_demo();
 }
