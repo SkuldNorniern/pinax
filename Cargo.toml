@@ -4,7 +4,6 @@ authors = ["Skuld Norniern <skuld@norniern.com>"]
 description = "A library for creating charts and tables in the terminal."
 license = "Apache-2.0"
 keywords = ["cli", "terminal", "chart", "table"]
-categories = ["cli", "terminal"]
 version = "0.1.0"
 edition = "2021"
 repository = "https://github.com/SkuldNorniern/pinax"
